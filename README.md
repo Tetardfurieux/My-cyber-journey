@@ -25,3 +25,12 @@ On another machine:
     mkdir /tmp/attackerbackup
     mount -o rw "ip":/"shared_folder" /tmp/attackerbackup
     Then add a new program that launch a shell and compile it, run it on the victim machine
+
+## Content discovery web
+Wordlist pour TOUT: https://github.com/danielmiessler/SecLists/tree/master
+
+    ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://10.10.28.209/FUZZ
+
+    dirb http://10.10.28.209/ /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+    gobuster dir --url http://10.10.28.209/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
