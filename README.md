@@ -38,4 +38,4 @@ Wordlist pour TOUT: https://github.com/danielmiessler/SecLists/tree/master
 ## Subdomain discovery
 Automated tool: https://github.com/aboul3la/Sublist3r
 
-    ./sublist3r.py -d acmeitsupport.thm
+    ./sublist3r.py -d <website url>
