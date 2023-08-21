@@ -34,3 +34,7 @@ Wordlist pour TOUT: https://github.com/danielmiessler/SecLists/tree/master
     dirb http://10.10.28.209/ /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
 
     gobuster dir --url http://10.10.28.209/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
+
+## Subdomain discovery
+Automated tool: https://github.com/aboul3la/Sublist3r
+    ./sublist3r.py -d acmeitsupport.thm
