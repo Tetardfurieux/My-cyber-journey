@@ -39,3 +39,6 @@ Wordlist pour TOUT: https://github.com/danielmiessler/SecLists/tree/master
 Automated tool: https://github.com/aboul3la/Sublist3r
 
     ./sublist3r.py -d <website url>
+Virtual hosts: 
+
+    ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: FUZZ.acmeitsupport.thm" -u http://MACHINE_IP
