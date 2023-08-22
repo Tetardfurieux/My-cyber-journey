@@ -58,4 +58,6 @@ Fuzzing github: https://github.com/ffuf/ffuf
 ## Hash craking
 https://crackstation.net/
 
+## File Inclusion
+Files to aim which a Directory Traversal
 ![image info](Useful_files_from_Linux_fs.png)
