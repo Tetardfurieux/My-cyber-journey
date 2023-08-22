@@ -58,4 +58,4 @@ Fuzzing github: https://github.com/ffuf/ffuf
 ## Hash craking
 https://crackstation.net/
 
-![image info](Useful_files_from_)
+![image info](Useful_files_from_Linux_fs.png)
