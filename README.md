@@ -28,6 +28,7 @@ On another machine:
 
 ## Content discovery web
 Wordlist pour TOUT: https://github.com/danielmiessler/SecLists/tree/master
+https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master
 
     ffuf -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt -u http://10.10.28.209/FUZZ
 
