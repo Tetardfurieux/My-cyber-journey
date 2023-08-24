@@ -106,6 +106,8 @@ Use ";" to chain syscall.
 
 ## SQL Injection
 
+### In-Band SQL
+
     0 UNION SELECT 1,2,database()  (database() returns the name of the database) 
 
 Once we know the name of the database, we get the tables of the database
