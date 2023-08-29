@@ -108,7 +108,8 @@ Use ";" to chain syscall.
 
 ### In-Band SQLi
 
-First we have to check how many columns there are to select : select 1 -> select 1,2 -> select 1,2,3 ....    
+First we have to check how many columns there are to select : select 1 -> select 1,2 -> select 1,2,3 ....
+
     0 UNION SELECT 1,2,database()  (database() returns the name of the database) 
 
 Once we know the name of the database, we get the tables of the database
