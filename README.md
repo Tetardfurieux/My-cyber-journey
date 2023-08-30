@@ -135,3 +135,21 @@ Then display the content:
 #### Time based
 
     admin123' UNION SELECT SLEEP(5);--  
+
+# Burp suite
+
+## Intruder
+
+### Attack types
+
+#### Sniper
+One set of payloads, if multiple positions, will do one at a time
+
+#### Battering ram
+One set of payloads, if multiple positions, will do all at once (same one not alternating)
+
+#### Pitchfork
+One set of payloads per position, first with first ect... 
+
+#### Cluster Bomb
+One set of payloads per position, every single combination possible
