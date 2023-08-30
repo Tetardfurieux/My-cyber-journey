@@ -153,3 +153,10 @@ One set of payloads per position, first with first ect...
 
 #### Cluster Bomb
 One set of payloads per position, every single combination possible
+
+## Macro
+Use when we want to get session cookie or loginToken that is generated each time you enter a login page
+![](https://assets.muirlandoracle.co.uk/thm/modules/burp/creatingMacro.gif)
+![](https://assets.muirlandoracle.co.uk/thm/modules/burp/configuringSessionHandlerP1.gif)
+![](https://assets.muirlandoracle.co.uk/thm/modules/burp/addingRuleAction.gif)
+
