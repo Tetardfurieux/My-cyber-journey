@@ -160,3 +160,5 @@ Use when we want to get session cookie or loginToken that is generated each time
 ![](https://assets.muirlandoracle.co.uk/thm/modules/burp/configuringSessionHandlerP1.gif)
 ![](https://assets.muirlandoracle.co.uk/thm/modules/burp/addingRuleAction.gif)
 
+## Sequencer
+Used to measure the entropy of "tokens" (session, login ...) 
