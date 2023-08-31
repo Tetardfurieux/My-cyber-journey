@@ -37,9 +37,13 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master
     gobuster dir --url http://10.10.28.209/ -w /usr/share/wordlists/SecLists/Discovery/Web-Content/common.txt
 
 ## Subdomain discovery
+
+DNS Bruteforce:
+
+    dnsrecon -t brt -d <domain>
 Automated tool: https://github.com/aboul3la/Sublist3r
 
-    ./sublist3r.py -d <website url>
+    ./sublist3r.py -d <domain>
 Virtual hosts: 
 
     ffuf -w /usr/share/wordlists/SecLists/Discovery/DNS/namelist.txt -H "Host: FUZZ.acmeitsupport.thm" -u http://MACHINE_IP
