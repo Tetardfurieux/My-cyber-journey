@@ -166,3 +166,12 @@ Use when we want to get session cookie or loginToken that is generated each time
 
 ## Sequencer
 Used to measure the entropy of "tokens" (session, login ...) 
+
+# Passive Reconnaissance
+Info on the domain name
+
+    whois <DOMAIN_NAME>
+Get IP adresses of a domain
+
+    nslookup <DOMAIN_NAME>
+    nslookup <OPTIONS> <DOMAIN_NAME> <SERVER> (OPTION: A for IPv4, AAAA for IPv6) (SERVER: DNS server)
