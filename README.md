@@ -199,3 +199,20 @@ These records resolve to the address of the servers that handle the email for th
 TXT Record
 
 TXT records are free text fields where any text-based data can be stored. TXT records have multiple uses, but some common ones can be to list servers that have the authority to send an email on behalf of the domain (this can help in the battle against spam and spoofed email). They can also be used to verify ownership of the domain name when signing up for third party services.
+
+# Active reconnaissance
+Ping to know if the system is up and accept pings ?
+
+    ping <domain>
+Trace the route between us and the target:
+
+    traceroute <domain>
+Connect to the Telnet (port 23) program:
+
+    telnet <ip> <port>
+Connect to the webserver with Netcat:
+
+    nc <ip> <port>
+
+    
+
