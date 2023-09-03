@@ -167,6 +167,12 @@ Use when we want to get session cookie or loginToken that is generated each time
 ## Sequencer
 Used to measure the entropy of "tokens" (session, login ...) 
 
+## Extender: 
+
+Add extensions such as:
+### IP Rotate: Use AWS to send requests to a website (to bypass IP restrictions)
+### Request Timer: Time the response time to detect timing attack
+
 # Passive Reconnaissance
 Info on the domain name
 
