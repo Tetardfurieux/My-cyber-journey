@@ -220,5 +220,31 @@ Connect to the webserver with Netcat:
 
     nc <ip> <port>
 
+# Nmap
+Get all the targets that will be scanned
     
+    nmap -sL TARGETS (-n for no names and then faster)
+Host in a textfile: 
 
+    nmap -iL <list_of_hosts.txt>
+10.10.10.10/24 to give a mask
+10.10.10.10-255 to give a range
+
+## ARP Scan:	
+    sudo nmap -PR -sn MACHINE_IP/24
+## ICMP Echo Scan:	
+    sudo nmap -PE -sn MACHINE_IP/24
+## ICMP Timestamp Scan:	
+    sudo nmap -PP -sn MACHINE_IP/24
+## ICMP Address Mask Scan:	
+    sudo nmap -PM -sn MACHINE_IP/24
+## TCP SYN Ping Scan:	
+    sudo nmap -PS22,80,443 -sn MACHINE_IP/30
+## TCP ACK Ping Scan:	
+    sudo nmap -PA22,80,443 -sn MACHINE_IP/30
+## UDP Ping Scan:	
+    sudo nmap -PU53,161,162 -sn MACHINE_IP/30
+## Nmap options
+-n: no DNS lookup
+-R: reverse-DNS lookup for all hosts
+-sn: host discovery only (no port scanning)
