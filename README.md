@@ -245,17 +245,17 @@ Host in a textfile:
 ## UDP Ping Scan:	
     sudo nmap -PU53,161,162 -sn MACHINE_IP/30
 ## Nmap options
--n: no DNS lookup
--R: reverse-DNS lookup for all hosts
--sn: host discovery only (no port scanning)
--p-:	all ports
--p1-1023:	scan ports 1 to 1023
--F:	100 most common ports
--r:	scan ports in consecutive order
--T<0-5>:	-T0 being the slowest and T5 the fastest
---max-rate 50:	rate <= 50 packets/sec
---min-rate 15:	rate >= 15 packets/sec
---min-parallelism 100:	at least 100 probes in parallel
+-n: no DNS lookup <br>
+-R: reverse-DNS lookup for all hosts <br>
+-sn: host discovery only (no port scanning) <br>
+-p-:	all ports <br>
+-p1-1023:	scan ports 1 to 1023 <br>
+-F:	100 most common ports <br>
+-r:	scan ports in consecutive order <br>
+-T<0-5>:	-T0 being the slowest and T5 the fastest <br>
+--max-rate 50:	rate <= 50 packets/sec <br>
+--min-rate 15:	rate >= 15 packets/sec <br>
+--min-parallelism 100:	at least 100 probes in parallel <br>
 
 ## TCP Connect Scan
     nmap -sT 10.10.87.248
