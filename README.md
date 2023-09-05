@@ -304,3 +304,14 @@ Host in a textfile:
     nmap -D DECOY_IP,ME MACHINE_IP
 ## Idle (Zombie) Scan
     sudo nmap -sI ZOMBIE_IP MACHINE_IP
+
+# Hydra
+
+-l username:	Provide the login name <br>
+-P WordList.txt:	Specify the password list to use <br>
+server service:	Set the server address and service to attack <br>
+-s PORT:	Use in case of non-default service port number <br>
+-V or -vV:	Show the username and password combinations being tried <br>
+-d:	Display debugging output if the verbose output is not helping <br>
+
+    hydra -l <username> -P <wordlist> <server> <service>
