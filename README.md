@@ -266,7 +266,18 @@ Host in a textfile:
 -vv:	very verbose <br>
 -d:	debugging <br>
 -dd:	more details for debugging <br>
-
+-sV:	determine service/version info on open ports <br>
+-sV: --version-light	try the most likely probes (2) <br>
+-sV: --version-all	try all available probes (9) <br>
+-O:	detect OS <br>
+--traceroute:	run traceroute to target <br>
+--script=SCRIPTS:	Nmap scripts to run <br>
+-sC or --script=default:	run default scripts <br>
+-A:	equivalent to -sV -O -sC --traceroute <br>
+-oN:	save output in normal format <br>
+-oG:	save output in grepable format <br>
+-oX:	save output in XML format <br>
+-oA:	save output in normal, XML and Grepable formats <br>
 ## TCP Connect Scan
     nmap -sT 10.10.87.248
 ## TCP SYN Scan	
