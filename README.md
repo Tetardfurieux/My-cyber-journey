@@ -256,10 +256,32 @@ Host in a textfile:
 --max-rate 50:	rate <= 50 packets/sec <br>
 --min-rate 15:	rate >= 15 packets/sec <br>
 --min-parallelism 100:	at least 100 probes in parallel <br>
-
+-f: Fragment IP data into 8 bytes	<br>
+-ff: Fragment IP data into 16 bytes	<br>
+--spoof-mac SPOOFED_MAC: Spoofed MAC Address<br>
 ## TCP Connect Scan
     nmap -sT 10.10.87.248
 ## TCP SYN Scan	
     sudo nmap -sS 10.10.87.248
 ## UDP Scan	
     sudo nmap -sU 10.10.87.248
+## TCP Null Scan	
+    sudo nmap -sN MACHINE_IP
+## TCP FIN Scan
+    sudo nmap -sF MACHINE_IP
+## TCP Xmas Scan	
+    sudo nmap -sX MACHINE_IP
+## TCP Maimon Scan	
+    sudo nmap -sM MACHINE_IP
+## TCP ACK Scan
+    sudo nmap -sA MACHINE_IP
+## TCP Window Scan
+    sudo nmap -sW MACHINE_IP
+## Custom TCP Scan	
+    sudo nmap --scanflags URGACKPSHRSTSYNFIN MACHINE_IP
+## Spoofed Source IP
+    sudo nmap -S SPOOFED_IP MACHINE_IP
+## Decoy Scan	
+    nmap -D DECOY_IP,ME MACHINE_IP
+## Idle (Zombie) Scan
+    sudo nmap -sI ZOMBIE_IP MACHINE_IP
