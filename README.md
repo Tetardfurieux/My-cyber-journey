@@ -258,7 +258,15 @@ Host in a textfile:
 --min-parallelism 100:	at least 100 probes in parallel <br>
 -f: Fragment IP data into 8 bytes	<br>
 -ff: Fragment IP data into 16 bytes	<br>
---spoof-mac SPOOFED_MAC: Spoofed MAC Address<br>
+--spoof-mac SPOOFED_MAC: Spoofed MAC Address <br>
+--source-port PORT_NUM: specify source port number <br>
+--data-length NUM: append random data to reach given length <br>
+--reason:	explains how Nmap made its conclusion <br>
+-v:	verbose <br>
+-vv:	very verbose <br>
+-d:	debugging <br>
+-dd:	more details for debugging <br>
+
 ## TCP Connect Scan
     nmap -sT 10.10.87.248
 ## TCP SYN Scan	
