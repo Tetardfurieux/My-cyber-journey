@@ -182,27 +182,27 @@ Get IP adresses of a domain
     nslookup <DOMAIN_NAME>
     nslookup <OPTIONS> <DOMAIN_NAME> <SERVER> (OPTION: A for IPv4, AAAA for IPv6) (SERVER: DNS server)
     
-DNS Record Types
+## DNS Record Types
 
 DNS isn't just for websites though, and multiple types of DNS record exist. We'll go over some of the most common ones that you're likely to come across.
 
-A Record
+### A Record
 
 These records resolve to IPv4 addresses, for example 104.26.10.229
 
-AAAA Record
+### AAAA Record
 
 These records resolve to IPv6 addresses, for example 2606:4700:20::681a:be5
 
-CNAME Record
+### CNAME Record
 
 These records resolve to another domain name, for example, TryHackMe's online shop has the subdomain name store.tryhackme.com which returns a CNAME record shops.shopify.com. Another DNS request would then be made to shops.shopify.com to work out the IP address.
 
-MX Record
+### MX Record
 
 These records resolve to the address of the servers that handle the email for the domain you are querying, for example an MX record response for tryhackme.com would look something like alt1.aspmx.l.google.com. These records also come with a priority flag. This tells the client in which order to try the servers, this is perfect for if the main server goes down and email needs to be sent to a backup server.
 
-TXT Record
+### TXT Record
 
 TXT records are free text fields where any text-based data can be stored. TXT records have multiple uses, but some common ones can be to list servers that have the authority to send an email on behalf of the domain (this can help in the battle against spam and spoofed email). They can also be used to verify ownership of the domain name when signing up for third party services.
 
@@ -223,7 +223,7 @@ Connect to the webserver with Netcat:
 # Nmap
 Get all the targets that will be scanned
     
-    nmap -sL TARGETS (-n for no names and then faster)
+    nmap -sL TARGETS
 Host in a textfile: 
 
     nmap -iL <list_of_hosts.txt>
@@ -248,3 +248,18 @@ Host in a textfile:
 -n: no DNS lookup
 -R: reverse-DNS lookup for all hosts
 -sn: host discovery only (no port scanning)
+-p-:	all ports
+-p1-1023:	scan ports 1 to 1023
+-F:	100 most common ports
+-r:	scan ports in consecutive order
+-T<0-5>:	-T0 being the slowest and T5 the fastest
+--max-rate 50:	rate <= 50 packets/sec
+--min-rate 15:	rate >= 15 packets/sec
+--min-parallelism 100:	at least 100 probes in parallel
+
+## TCP Connect Scan
+    nmap -sT 10.10.87.248
+## TCP SYN Scan	
+    sudo nmap -sS 10.10.87.248
+## UDP Scan	
+    sudo nmap -sU 10.10.87.248
