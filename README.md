@@ -315,3 +315,8 @@ server service:	Set the server address and service to attack <br>
 -d:	Display debugging output if the verbose output is not helping <br>
 
     hydra -l <username> -P <wordlist> <server> <service>
+
+# Metasploit
+Launch metasploit:
+
+    msfconsole
