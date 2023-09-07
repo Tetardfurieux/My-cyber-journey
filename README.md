@@ -320,3 +320,9 @@ server service:	Set the server address and service to attack <br>
 Launch metasploit:
 
     msfconsole
+
+    show options/payloads/exploits....
+    use exploit/../../..
+    back
+    search
+    
