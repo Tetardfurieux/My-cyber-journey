@@ -337,9 +337,12 @@ server service:	Set the server address and service to attack <br>
 ### Set/unset global parameter:
     setg/unsetg PARAMETER VALUE
 ### Launch exploit: 
-    exploit/run (-z to launch it in the background)
+    exploit/run (-z to launch it in the background, or CTRL+Z)
 ### Check if target is exploitable without running the exploit:
     check
+### Change payload:
+    show payload
+    set payload <id>
 ## Sessions
 Once a vulnerability has been successfully exploited, a session will be created. This is the communication channel established between the target system and Metasploit.
 ### Background the session prompt:
@@ -348,3 +351,20 @@ Once a vulnerability has been successfully exploited, a session will be created.
     sessions
 ### Interact with a session:
     sessions -i ID
+
+## Database and Workspace
+### Start PostgreSQL database:
+    systemctl start postgresql
+    msfdb init
+### Database commands:
+    db_status
+    db_nmap
+    ...
+### Workspace commands:
+    workspace -a/-d/-r/-D/-v
+### Check hosts and services:
+    hosts/services
+### Get hosts to set rhosts:
+    hosts -R
+### Search through services: 
+    services -S <service>
