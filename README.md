@@ -317,12 +317,34 @@ server service:	Set the server address and service to attack <br>
     hydra -l <username> -P <wordlist> <server> <service>
 
 # Metasploit
-Launch metasploit:
-
+## Before exploit
+### Launch metasploit:
     msfconsole
-
-    show options/payloads/exploits....
+### Search for scripts:
+    search <type:auxiliary/post/exploit....> <telnet,ssh...>
+### Use:    
     use exploit/../../..
+### Show parameters, payloads...:
+    show options/payloads/exploits...
+### Set a parameter value:
+    set PARAMETER_NAME VALUE
+### Set a file as a parameter: 
+    rhosts file:/path/of/the/target_file.txt
+### Remove a parameter value or all:
+    unset PARAMETER_NAME/all
+### Leave exploit console
     back
-    search
-    
+### Set/unset global parameter:
+    setg/unsetg PARAMETER VALUE
+### Launch exploit: 
+    exploit/run (-z to launch it in the background)
+### Check if target is exploitable without running the exploit:
+    check
+## Sessions
+Once a vulnerability has been successfully exploited, a session will be created. This is the communication channel established between the target system and Metasploit.
+### Background the session prompt:
+    background
+### Show existing sessions:
+    sessions
+### Interact with a session:
+    sessions -i ID
