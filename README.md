@@ -544,3 +544,8 @@ Look for database passwd or user passwd in web.config: <br>
 - C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config <br>
 
         type C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\web.config | findstr connectionString
+
+### Retrieve Credentials from Software: PuTTY
+Kind of SSH usually used on windows 
+
+    reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
