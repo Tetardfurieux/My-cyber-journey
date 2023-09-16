@@ -638,3 +638,7 @@ Go to dir of AccessChk and then:
     accesschk64.exe -qlc <SERVICE>
 #### Change Service's associated executable and account
     sc config THMService binPath= <"C:\Users\thm-unpriv\rev-svc3.exe"> obj= <LocalSystem>
+
+## Vulnerable Software
+### Get all software
+    wmic product get name,version,vendor
