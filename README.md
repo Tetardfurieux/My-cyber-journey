@@ -518,6 +518,25 @@ https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-rev
     net localgroup administrators <username> /add
 
 # Priviledge escalation Windows
+## Automated tools
+WinPEAS: https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS <br>
+
+    winpeas.exe > outputfile.txt
+PrivescCheck: https://github.com/itm4n/PrivescCheck <br>
+Bypass execution policy restrictions and launch: <br>
+
+    Set-ExecutionPolicy Bypass -Scope process -Force
+    . .\PrivescCheck.ps1
+    Invoke-PrivescCheck
+WES-NG: Windows Exploit Suggester - Next Generation: https://github.com/bitsadmin/wesng <br>
+Great because it executes on the attacker machine and then doesn't need to upload and execute a binary on the target machine. <br>
+Before launching:
+
+    wes.py --update 
+We need to give the output of "systeminfo" command on the target machine:
+
+    wes.py systeminfo.txt
+
 ## Password harvesting
 ### Unattended Windows Installations
 Installation done on many machine at the same time without the user. This can leave some config files with the passwd ect..: <br>
