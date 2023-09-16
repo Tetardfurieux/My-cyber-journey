@@ -537,6 +537,8 @@ We need to give the output of "systeminfo" command on the target machine:
 
     wes.py systeminfo.txt
 
+In Metasploit: multi/recon/local_exploit_suggester
+
 ## Password harvesting
 ### Unattended Windows Installations
 Installation done on many machine at the same time without the user. This can leave some config files with the passwd ect..: <br>
